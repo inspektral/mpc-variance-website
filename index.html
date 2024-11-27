@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Brightness Questionnaire</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sound Brightness Questionnaire</h1>
+
+         <!-- Name Input Section -->
+         <div id="name-section">
+            <label for="userName">Enter your name to begin:</label>
+            <input type="text" id="userName" placeholder="Your Name" required>
+            <button id="startButton">Start</button>
+        </div>
+
+        <p id="instructions">Welcome! Compare the brightness of the sounds on the following pages.</p>
+
+        <div id="questionnaire">
+            <!-- This will be dynamically populated by JavaScript -->
+        </div>
+
+        <div id="navigation">
+            <button id="prev" disabled>Previous</button>
+            <button id="next">Next</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<button id="submitButton">Submit</button>
+<p id="statusMessage"></p>
+<!-- <script>
+    document.querySelector("#submitButton").addEventListener("click", () => {
+        document.querySelector("#statusMessage").innerText = "Button was clicked!";
+    });
+</script> -->

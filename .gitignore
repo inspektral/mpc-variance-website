@@ -1,0 +1,18 @@
+# Ignore system files
+.DS_Store
+
+# Ignore log files
+debug.log
+
+# Ignore responses file
+responses.json
+
+# Ignore node_modules directory (if using Node.js)
+node_modules/
+
+# Ignore test output
+tests/test_post.php
+
+# Ignore any other temporary files
+*.tmp
+*.log
