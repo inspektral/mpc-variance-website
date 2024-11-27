@@ -1,0 +1,11 @@
+name: php-app
+services:
+  - name: web
+    image: dockerfile
+    build_command: ''
+    run_command: ''
+    source_dir: /
+    http_port: 80
+    routes:
+      - path: /
+    environment_slug: php
