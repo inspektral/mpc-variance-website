@@ -1,13 +1,8 @@
 <?php
-try {
-    $db = new PDO('sqlite:database.db');
-    $stmt = $db->query("SELECT * FROM responses");
-    $responses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$response = file_get_contents('http://yourdomain.com/get_data.php');
+$responses = json_decode($response, true);
 
-    echo "<pre>";
-    print_r($responses);
-    echo "</pre>";
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
+echo "<pre>";
+print_r($responses);
+echo "</pre>";
 ?>
