@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Submit data to PHP
 function submitData() {
     // console.log("Submit button clicked. Data being sent..."); // Debugging line
-    fetch('data.php', {
+    fetch('data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({userName, responses}),

@@ -1,13 +1,20 @@
 [
-    {
-        "name": "John Doe",
-        "response": "Sample response"
-    },
-    {
-        "userName": "tito",
-        "responses": {
-            "1": "A",
-            "2": "B"
-        }
+  {
+    "name": "John Doe",
+    "response": "Sample response"
+  },
+  {
+    "userName": "tito",
+    "responses": {
+      "1": "A",
+      "2": "B"
     }
+  },
+  {
+    "userName": "polone",
+    "responses": {
+      "1": "A",
+      "2": "Neither"
+    }
+  }
 ]
