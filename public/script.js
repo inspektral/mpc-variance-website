@@ -1,20 +1,13 @@
-const sounds = [
-    { id: 1, fileA: "/sounds/a2-drone-tone.wav", fileB: "sounds/bp_w_200_oboe-A4.wav" },
-    { id: 2, fileA: "/sounds/another3oh3.wav", fileB: "sounds/bp_w_200_oboe-A4.wav" },
-    // { id: 2, fileA: "sounds/sound2A.wav", fileB: "sounds/sound2B.wav" },
-    // Add all 20 sound pairs here
-];
-
 let userName = ''; // Variable to store the user's name
 let currentQuestion = 0;
 let responses = {};
 
-// Randomize sounds
-const randomizedSounds = sounds.sort(() => Math.random() - 0.5);
-
 const questionnaireDiv = document.getElementById('questionnaire');
 const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
+
+var sounds_list 
+
 
 // Function to start the questionnaire
 document.getElementById('startButton').addEventListener('click', () => {
@@ -29,6 +22,13 @@ document.getElementById('startButton').addEventListener('click', () => {
     // document.getElementById('questionnaire-section').style.display = 'block';
     displayQuestion();
 });
+
+// onload function
+window.onload = async () => {
+    console.log("Page loaded");
+    sounds_list = await get_sounds_list();
+    console.log(sounds_list); 
+}
 
 // Display a question
 function displayQuestion() {
@@ -101,6 +101,17 @@ function submitData() {
         console.log(data); // Debugging purpose
     })
     .catch(error => console.error('Error:', error));
+}
+
+async function get_sounds_list() {
+    try {
+        const response = await fetch('sounds_list');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        return [];
+    }
 }
 
 

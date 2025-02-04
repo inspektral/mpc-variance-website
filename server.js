@@ -37,6 +37,37 @@ app.post('/data', (req, res) => {
     }
 });
 
+
+app.get('/sounds_list', (req, res) => {
+    const soundsDir = path.join(__dirname, 'public', 'sounds');
+    
+    function buildTree(dir) {
+        const items = {};
+        const files = fs.readdirSync(dir);
+        
+        files.forEach(file => {
+            const fullPath = path.join(dir, file);
+            const stat = fs.statSync(fullPath);
+            const relativePath = path.relative(soundsDir, fullPath);
+            
+            if (stat.isDirectory()) {
+                items[file] = buildTree(fullPath);
+            } else {
+                items[file] = relativePath;
+            }
+        });
+        
+        return items;
+    }
+    
+    try {
+        const tree = buildTree(soundsDir);
+        res.json(tree);
+    } catch (err) {
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
