@@ -81,20 +81,33 @@ function conclusion() {
     submitData();
 }
 
-// Submit data to PHP
+// function submitData() {
+//     fetch('data', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({userName, answers}),
+//     })
+//     .then(response => response.text())
+//     .then(data => {
+//         alert('Thank you for completing the questionnaire!');
+//         console.log(data); // Debugging purpose
+//     })
+//     .catch(error => console.error('Error:', error));
+// }
+
 function submitData() {
-    // console.log("Submit button clicked. Data being sent..."); // Debugging line
-    fetch('data', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({userName, answers}),
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert('Thank you for completing the questionnaire!');
-        console.log(data); // Debugging purpose
-    })
-    .catch(error => console.error('Error:', error));
+    const params = new URLSearchParams({
+        userName: userName,
+        answers: JSON.stringify(answers)
+    });
+
+    fetch(`submit-data?${params.toString()}`)
+        .then(response => response.text())
+        .then(data => {
+            alert('Thank you for completing the questionnaire!');
+            console.log(data);
+        })
+        .catch(error => console.error('Error:', error));
 }
 
 async function get_sounds_list() {

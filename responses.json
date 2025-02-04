@@ -53,5 +53,225 @@
         "difference": "false"
       }
     ]
+  },
+  {
+    "userName": "paolo",
+    "answers": [
+      {
+        "soundA": "sounds/2/MPC-sound-2_80.wav",
+        "soundB": "sounds/2/MPC-sound-2_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/5/MPC-sound-5_full.wav",
+        "soundB": "sounds/5/MPC-sound-5_70.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_full.wav",
+        "soundB": "sounds/1/MPC-sound-1_91.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/3/MPC-sound-3_full.wav",
+        "soundB": "sounds/3/MPC-sound-3_59.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/4/MPC-sound-4_72.wav",
+        "soundB": "sounds/4/MPC-sound-4_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_94.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_full.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/5/MPC-sound-5_65.wav",
+        "soundB": "sounds/5/MPC-sound-5_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_full.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/2/MPC-sound-2_95.wav",
+        "soundB": "sounds/2/MPC-sound-2_full.wav",
+        "difference": "false"
+      }
+    ]
+  },
+  {
+    "userName": "pierino",
+    "answers": [
+      {
+        "soundA": "sounds/2/MPC-sound-2_full.wav",
+        "soundB": "sounds/2/MPC-sound-2_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/5/MPC-sound-5_full.wav",
+        "soundB": "sounds/5/MPC-sound-5_74.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/4/MPC-sound-4_90.wav",
+        "soundB": "sounds/4/MPC-sound-4_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/2/MPC-sound-2_full.wav",
+        "soundB": "sounds/2/MPC-sound-2_80.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/4/MPC-sound-4_full.wav",
+        "soundB": "sounds/4/MPC-sound-4_96.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_full.wav",
+        "soundB": "sounds/1/MPC-sound-1_82.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/3/MPC-sound-3_full.wav",
+        "soundB": "sounds/3/MPC-sound-3_80.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/4/MPC-sound-4_96.wav",
+        "soundB": "sounds/4/MPC-sound-4_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/4/MPC-sound-4_76.wav",
+        "soundB": "sounds/4/MPC-sound-4_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/2/MPC-sound-2_71.wav",
+        "soundB": "sounds/2/MPC-sound-2_full.wav",
+        "difference": "false"
+      }
+    ]
+  },
+  {
+    "userName": "paolo",
+    "answers": [
+      {
+        "soundA": "sounds/5/MPC-sound-5_96.wav",
+        "soundB": "sounds/5/MPC-sound-5_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_88.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/3/MPC-sound-3_72.wav",
+        "soundB": "sounds/3/MPC-sound-3_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/3/MPC-sound-3_59.wav",
+        "soundB": "sounds/3/MPC-sound-3_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_full.wav",
+        "soundB": "sounds/1/MPC-sound-1_73.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/4/MPC-sound-4_83.wav",
+        "soundB": "sounds/4/MPC-sound-4_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_full.wav",
+        "soundB": "sounds/1/MPC-sound-1_85.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/2/MPC-sound-2_full.wav",
+        "soundB": "sounds/2/MPC-sound-2_91.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/4/MPC-sound-4_72.wav",
+        "soundB": "sounds/4/MPC-sound-4_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/5/MPC-sound-5_78.wav",
+        "soundB": "sounds/5/MPC-sound-5_full.wav",
+        "difference": "true"
+      }
+    ]
+  },
+  {
+    "userName": "paolo",
+    "answers": [
+      {
+        "soundA": "sounds/2/MPC-sound-2_full.wav",
+        "soundB": "sounds/2/MPC-sound-2_91.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/5/MPC-sound-5_full.wav",
+        "soundB": "sounds/5/MPC-sound-5_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_full.wav",
+        "soundB": "sounds/1/MPC-sound-1_91.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_94.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/5/MPC-sound-5_65.wav",
+        "soundB": "sounds/5/MPC-sound-5_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/4/MPC-sound-4_80.wav",
+        "soundB": "sounds/4/MPC-sound-4_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_full.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/5/MPC-sound-5_full.wav",
+        "soundB": "sounds/5/MPC-sound-5_96.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/5/MPC-sound-5_92.wav",
+        "soundB": "sounds/5/MPC-sound-5_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/3/MPC-sound-3_full.wav",
+        "soundB": "sounds/3/MPC-sound-3_89.wav",
+        "difference": "true"
+      }
+    ]
   }
 ]

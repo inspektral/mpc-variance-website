@@ -3,6 +3,12 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const { createClient } = require('@supabase/supabase-js');
+
+require('dotenv').config()
+const supabaseUrl = 'https://umjrzubqifbmzhwaitag.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -31,12 +37,44 @@ app.post('/data', (req, res) => {
         }
         responses.push(data);
         fs.writeFileSync(responsesFile, JSON.stringify(responses, null, 2));
+        supabase
+            .from('responses')
+            .insert([
+                { userName: data.userName, answers: data.answers }
+            ])
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         res.send('Data saved successfully.');
     } else {
         res.status(400).send('Invalid data received.');
     }
 });
 
+app.get('/submit-data', async (req, res) => {
+    const userName = req.query.userName;
+    const answers = JSON.parse(req.query.answers || '[]');
+    
+    if (!userName || !answers) {
+        return res.status(400).send('Missing parameters');
+    }
+
+    try {
+        const { data, error } = await supabase
+            .from('responses')
+            .insert([
+                { userName, answers }
+            ]);
+
+        if (error) throw error;
+        res.send('Data saved successfully');
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
 
 app.get('/sounds_list', (_req, res) => {
     const soundsDir = path.join(__dirname, 'public', 'sounds');
