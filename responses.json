@@ -1,20 +1,57 @@
 [
   {
-    "name": "John Doe",
-    "response": "Sample response"
-  },
-  {
-    "userName": "tito",
-    "responses": {
-      "1": "A",
-      "2": "B"
-    }
-  },
-  {
-    "userName": "polone",
-    "responses": {
-      "1": "A",
-      "2": "Neither"
-    }
+    "userName": "",
+    "answers": [
+      {
+        "soundA": "sounds/2/MPC-sound-2_75.wav",
+        "soundB": "sounds/2/MPC-sound-2_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/5/MPC-sound-5_full.wav",
+        "soundB": "sounds/5/MPC-sound-5_65.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_78.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_82.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/3/MPC-sound-3_76.wav",
+        "soundB": "sounds/3/MPC-sound-3_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_85.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/1/MPC-sound-1_85.wav",
+        "soundB": "sounds/1/MPC-sound-1_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/3/MPC-sound-3_72.wav",
+        "soundB": "sounds/3/MPC-sound-3_full.wav",
+        "difference": "true"
+      },
+      {
+        "soundA": "sounds/2/MPC-sound-2_75.wav",
+        "soundB": "sounds/2/MPC-sound-2_full.wav",
+        "difference": "false"
+      },
+      {
+        "soundA": "sounds/2/MPC-sound-2_full.wav",
+        "soundB": "sounds/2/MPC-sound-2_full.wav",
+        "difference": "false"
+      }
+    ]
   }
 ]

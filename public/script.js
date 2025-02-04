@@ -1,6 +1,7 @@
 let userName = ''; // Variable to store the user's name
 let currentQuestion = 0;
-let responses = {};
+let totalQuestions = 10;
+let answers = [];
 
 const questionnaireDiv = document.getElementById('questionnaire');
 const prevButton = document.getElementById('prev');
@@ -27,65 +28,58 @@ document.getElementById('startButton').addEventListener('click', () => {
 window.onload = async () => {
     console.log("Page loaded");
     sounds_list = await get_sounds_list();
-    console.log(sounds_list); 
+    console.log(sounds_list);
+    displayQuestion();
 }
 
 // Display a question
-function displayQuestion() {
+async function displayQuestion() {
+    const randomizedSounds = get_couple_sounds();
+
+    soundA = await get_sound(randomizedSounds[0])
+    soundB = await get_sound(randomizedSounds[1])
+
     questionnaireDiv.innerHTML = `
-        <h2>Question ${currentQuestion + 1}</h2>
+        <h2>Question ${currentQuestion + 1}/${totalQuestions}</h2>
         <audio controls>
-            <source src="${randomizedSounds[currentQuestion].fileA}" type="audio/wav">
+            <source src="${soundA}" type="audio/wav">
             Your browser does not support the audio element.
         </audio>
         <audio controls>
-            <source src="${randomizedSounds[currentQuestion].fileB}" type="audio/wav">
+            <source src="${soundB}" type="audio/wav">
             Your browser does not support the audio element.
         </audio>
         <div>
-            <button onclick="saveResponse('${randomizedSounds[currentQuestion].id}', 'A')">Sound A is brighter</button>
-            <button onclick="saveResponse('${randomizedSounds[currentQuestion].id}', 'B')">Sound B is brighter</button>
-            <button onclick="saveResponse('${randomizedSounds[currentQuestion].id}', 'Neither')">Neither is brighter</button>
+            <button onclick="saveResponse('${randomizedSounds[0]}', '${randomizedSounds[1]}', 'false')">they're the same</button>
+            <button onclick="saveResponse('${randomizedSounds[0]}', '${randomizedSounds[1]}', 'true')">they're different</button>
         </div>
     `;
-    updateNavigation();
 }
 
 // Save the response
-function saveResponse(questionId, choice) {
-    responses[questionId] = choice;
-    console.log(responses); // Debugging purpose
-}
+function saveResponse(soundA, soundB, difference) {
+    currentQuestion++;
+    const answer = {
+        "soundA": soundA,
+        "soundB": soundB,
+        "difference": difference
+    };
+    answers.push(answer);
+    console.log(answers);
 
-// Update navigation buttons
-function updateNavigation() {
-    prevButton.disabled = currentQuestion === 0;
-    nextButton.disabled = currentQuestion === randomizedSounds.length - 1;
-}
-
-// Add navigation functionality
-prevButton.addEventListener('click', () => {
-    if (currentQuestion > 0) {
-        currentQuestion--;
+    if (currentQuestion === totalQuestions) {
+        conclusion();
+    } else {
         displayQuestion();
     }
-});
+}
 
-nextButton.addEventListener('click', () => {
-    if (currentQuestion < randomizedSounds.length - 1) {
-        currentQuestion++;
-        displayQuestion();
-    } else if (currentQuestion === randomizedSounds.length - 1) {
-        submitData();
-    }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector("#submitButton").addEventListener("click", () => {
-        console.log("Submit button clicked. Data being sent...");
-        submitData();
-    });
-});
+function conclusion() {
+    questionnaireDiv.innerHTML = `
+    <h2>Thank you for completing the questionnaire!</h2>
+    `;
+    submitData();
+}
 
 // Submit data to PHP
 function submitData() {
@@ -93,7 +87,7 @@ function submitData() {
     fetch('data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({userName, responses}),
+        body: JSON.stringify({userName, answers}),
     })
     .then(response => response.text())
     .then(data => {
@@ -105,16 +99,45 @@ function submitData() {
 
 async function get_sounds_list() {
     try {
-        const response = await fetch('sounds_list');
-        const data = await response.json();
-        return data;
-    } catch (error) {
+        const response = await fetch('sounds_list.json');
+        return await response.json();
+    }
+    catch (error) {
         console.error('Error:', error);
-        return [];
+        return null;
     }
 }
 
 
+function get_couple_sounds() {
+    folders = Object.keys(sounds_list)
+    randomFolder = folders[Math.floor(Math.random() * folders.length)]
+    sounds = sounds_list[randomFolder]["children"]
+    console.log(sounds)
+    
+    fullSound = sounds.find(sound => sound["name"].includes('_full'))
+    
+    randomSound = sounds[Math.floor(Math.random() * sounds.length)]
 
-// Initialize
-displayQuestion();
+    fullSoundPath = "sounds/"+fullSound["path"]
+    randomSoundPath = "sounds/"+randomSound["path"]
+    
+    soundpPathCouple = [fullSoundPath, randomSoundPath]
+    console.log(soundpPathCouple)
+    
+    soundpPathCouple.sort(() => Math.random() - 0.5)
+    return soundpPathCouple
+}
+
+async function get_sound(path) {
+    console.log(path)
+    try {
+        const response = await fetch(path);
+        const audioBlob = await response.blob();
+        return URL.createObjectURL(audioBlob);
+    }
+    catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}

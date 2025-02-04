@@ -38,22 +38,44 @@ app.post('/data', (req, res) => {
 });
 
 
-app.get('/sounds_list', (req, res) => {
+app.get('/sounds_list', (_req, res) => {
     const soundsDir = path.join(__dirname, 'public', 'sounds');
     
-    function buildTree(dir) {
-        const items = {};
+    function buildList(dir, relativePath = '') {
+        const items = [];
         const files = fs.readdirSync(dir);
         
-        files.forEach(file => {
+        // Sort files and directories
+        const sorted = files.sort((a, b) => {
+            const aPath = path.join(dir, a);
+            const bPath = path.join(dir, b);
+            const aIsDir = fs.statSync(aPath).isDirectory();
+            const bIsDir = fs.statSync(bPath).isDirectory();
+            
+            // Directories come first
+            if (aIsDir && !bIsDir) return -1;
+            if (!aIsDir && bIsDir) return 1;
+            return a.localeCompare(b); // Alphabetical sorting
+        });
+        
+        sorted.forEach(file => {
             const fullPath = path.join(dir, file);
             const stat = fs.statSync(fullPath);
-            const relativePath = path.relative(soundsDir, fullPath);
+            const currentRelativePath = path.join(relativePath, file);
             
             if (stat.isDirectory()) {
-                items[file] = buildTree(fullPath);
-            } else {
-                items[file] = relativePath;
+                items.push({
+                    type: 'directory',
+                    name: file,
+                    path: currentRelativePath,
+                    children: buildList(fullPath, currentRelativePath)
+                });
+            } else if (file.match(/\.(mp3|wav|ogg)$/i)) { // Only audio files
+                items.push({
+                    type: 'file',
+                    name: file,
+                    path: currentRelativePath
+                });
             }
         });
         
@@ -61,9 +83,10 @@ app.get('/sounds_list', (req, res) => {
     }
     
     try {
-        const tree = buildTree(soundsDir);
-        res.json(tree);
+        const list = buildList(soundsDir);
+        res.json(list);
     } catch (err) {
+        console.error('Error reading sounds directory:', err);
         res.status(500).send('Internal Server Error');
     }
 });

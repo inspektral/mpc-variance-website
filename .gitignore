@@ -16,3 +16,4 @@ tests/test_post.php
 # Ignore any other temporary files
 *.tmp
 *.log
+.vercel
